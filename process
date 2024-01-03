@@ -1,0 +1,14 @@
+I have setup the application
+
+Now,
+
+there will be a home screen (/home), in which i am going list all notes, 
+
+home -> note list | Add button -> note List is going to contain all the notes name as tabs
+
+when note is clicked it opens and show all the content with title so have to create expanded view for it
+it is better if it is modal
+
+Home will have button and ListView
+List view will have TabView
+Tab will have title displayed

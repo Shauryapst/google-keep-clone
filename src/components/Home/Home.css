@@ -1,0 +1,33 @@
+/* components/Home.css */
+
+.home-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+
+  }
+  
+  
+  .note-list {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    margin-top: 20px;
+  }
+  
+
+  
+  .add-note-button {
+        background-color: #04AA6D; /* Green */
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 20px;
+       
+      
+    
+  }
+  
