@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from "react";
 import "./NoteModal.css";
-const NoteModal = ({ selectedNote, closeModal, addNote}) => {
-  const [title, setTitle] = useState("Title");
-  const [content, setContent] = useState("Note");
+import { v4 as uuidv4 } from 'uuid';
+const NoteModal = ({ selectedNote, closeModal, addNote, editNote}) => {
+  const [title, setTitle] = useState();
+  const [content, setContent] = useState();
   const [isChanged, setIsChanged] = useState(false);
 
   useEffect(()=>{
@@ -11,6 +12,10 @@ const NoteModal = ({ selectedNote, closeModal, addNote}) => {
         setContent(selectedNote.content);
     }
   },[selectedNote]);
+
+  const generateId = () => {
+    return uuidv4();
+  };
 
   const handleTitleChange = (e) =>{
     e.preventDefault();
@@ -26,10 +31,20 @@ const NoteModal = ({ selectedNote, closeModal, addNote}) => {
   const handleModalClose = () => {
 
     if(isChanged && (title.length !==0 || content.length!==0)){
+      if(selectedNote == null){
         addNote({
             "title": title,
-            "content": content
+            "content": content,
+            "id" : generateId()
         })
+      }
+      else{
+        editNote({
+          "title":title,
+          "content": content,
+          "id": selectedNote.id
+        })
+      }
     }
     closeModal();
 
@@ -43,16 +58,18 @@ const NoteModal = ({ selectedNote, closeModal, addNote}) => {
           <textarea
             className="textarea-title"
             name="title"
-            placeholder={title}
+            placeholder="Title"
             onChange={handleTitleChange}
+            value={title}
           />
         </div>
         <div>
           <textarea
             className="textarea-content"
             name="content"
-            placeholder={content}
+            placeholder="Content"
             onChange={handleContentChange}
+            value={content}
           />
         </div>
         <button onClick={handleModalClose}>Close</button>

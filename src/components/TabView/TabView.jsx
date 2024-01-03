@@ -1,8 +1,12 @@
 import React from 'react'
 import './TabView.css';
-const TabView = ({title, content}) => {
+const TabView = ({note, openModal }) => {
+
+  const handleClick = () =>{
+    openModal(note);
+  }
   return (
-    <div className='tab'>{title}</div>
+    <div className='tab' onClick={handleClick}>{note?.title}</div>
   )
 }
 

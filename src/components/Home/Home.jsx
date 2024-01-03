@@ -42,23 +42,44 @@ const Home = () => {
     setModalOpen(false);
   };
 
+  const handleTabClick = (title, content) => {
+    openModal({ title, content });
+  };
+
   const handleAddButtonClick = () => {
     setSelectedNote(null);
     setModalOpen(true);
   };
 
   const addNote = (newNote) => {
-    setNotes([newNote, ...notes])
-  }
+    setNotes([newNote, ...notes]);
+  };
+  const editNote = (updatedNote) => {
+    const noteIndex = notes.findIndex((note) => note.id === updatedNote.id);
+    if (noteIndex !== -1) {
+      const updatedNotes = [...notes];
+      updatedNotes[noteIndex] = updatedNote;
+      setNotes(updatedNotes);
+      setModalOpen(false);
+    }
+  };
   return (
     <div className="home-container">
       <div className="note-list">
         <ListView notes={notes} openModal={openModal} />
       </div>
 
-      <button className="add-note-button" onClick={handleAddButtonClick}>+</button>
-      {isModalOpen && <NoteModal selectedNote={selectedNote} closeModal={closeModal} addNote={addNote} />}
-
+      <button className="add-note-button" onClick={handleAddButtonClick}>
+        +
+      </button>
+      {isModalOpen && (
+        <NoteModal
+          selectedNote={selectedNote}
+          closeModal={closeModal}
+          addNote={addNote}
+          editNote={editNote}
+        />
+      )}
     </div>
   );
 };
