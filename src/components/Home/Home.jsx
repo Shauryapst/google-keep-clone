@@ -42,10 +42,6 @@ const Home = () => {
     setModalOpen(false);
   };
 
-  const handleTabClick = (title, content) => {
-    openModal({ title, content });
-  };
-
   const handleAddButtonClick = () => {
     setSelectedNote(null);
     setModalOpen(true);
@@ -63,10 +59,16 @@ const Home = () => {
       setModalOpen(false);
     }
   };
+
+  const deleteNote = (noteToDeleteId) =>{
+    const updatedNotes = notes.filter((note) => note.id !== noteToDeleteId);
+    setNotes(updatedNotes);
+
+  }
   return (
     <div className="home-container">
       <div className="note-list">
-        <ListView notes={notes} openModal={openModal} />
+        <ListView notes={notes} openModal={openModal} deleteNote={deleteNote} />
       </div>
 
       <button className="add-note-button" onClick={handleAddButtonClick}>
@@ -78,6 +80,7 @@ const Home = () => {
           closeModal={closeModal}
           addNote={addNote}
           editNote={editNote}
+          deleteNote={deleteNote}
         />
       )}
     </div>
