@@ -1,37 +1,28 @@
 // components/Home.js
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 // import { Link } from 'react-router-dom';
 import ListView from "../ListView/ListView";
 import "./Home.css";
 import NoteModal from "../NoteModal/NoteModal";
 
-const data = [
-  {
-    id: "1",
-    title: "1",
-    content: "1",
-  },
-  {
-    id: "2",
-    title: "2",
-    content: "2",
-  },
-  {
-    id: "3",
-    title: "3",
-    content: "3",
-  },
-  {
-    id: "4",
-    title: "4",
-    content: "4",
-  },
-];
-
-const Home = () => {
+const Home = ({ notes, searchQuery, updateNoteList }) => {
   const [selectedNote, setSelectedNote] = useState(null);
   const [isModalOpen, setModalOpen] = useState(false);
-  const [notes, setNotes] = useState(data);
+  const [displayNotes, setDisplayedNotes] = useState(notes);
+
+  useEffect(() => {
+    if (searchQuery.length !== 0) {
+      setDisplayedNotes(
+        notes.filter(
+          (note) =>
+            note?.content?.toLowerCase().includes(searchQuery.toLowerCase()) ||
+            note?.title?.toLowerCase().includes(searchQuery.toLowerCase())
+        )
+      );
+    } else {
+      setDisplayedNotes(notes);
+    }
+  }, [searchQuery, notes]);
 
   const openModal = (note) => {
     setSelectedNote(note);
@@ -48,32 +39,36 @@ const Home = () => {
   };
 
   const addNote = (newNote) => {
-    setNotes([newNote, ...notes]);
+    updateNoteList([newNote, ...notes]);
   };
   const editNote = (updatedNote) => {
     const noteIndex = notes.findIndex((note) => note.id === updatedNote.id);
     if (noteIndex !== -1) {
       const updatedNotes = [...notes];
       updatedNotes[noteIndex] = updatedNote;
-      setNotes(updatedNotes);
+      updateNoteList(updatedNotes);
       setModalOpen(false);
     }
   };
 
-  const deleteNote = (noteToDeleteId) =>{
+  const deleteNote = (noteToDeleteId) => {
     const updatedNotes = notes.filter((note) => note.id !== noteToDeleteId);
-    setNotes(updatedNotes);
-
-  }
+    updateNoteList(updatedNotes);
+  };
   return (
     <div className="home-container">
-      <div className="note-list">
-        <ListView notes={notes} openModal={openModal} deleteNote={deleteNote} />
+      <div className="add-note-box">
+        <span className="add-note-tab" onClick={handleAddButtonClick}>
+          <i className="fa fa-plus add-note-icon"></i>
+        </span>
       </div>
-
-      <button className="add-note-button" onClick={handleAddButtonClick}>
-        +
-      </button>
+      <div className="note-list">
+        <ListView
+          notes={displayNotes}
+          openModal={openModal}
+          deleteNote={deleteNote}
+        />
+      </div>
       {isModalOpen && (
         <NoteModal
           selectedNote={selectedNote}
