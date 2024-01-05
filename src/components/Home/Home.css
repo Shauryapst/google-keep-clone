@@ -14,11 +14,7 @@
   justify-content: space-around;
   margin-top: 20px;
   overflow-y: auto;
-  max-height: 800px;
-  
-  @media (max-width: 600px) {
-    max-height: none; 
-  }
+  max-height: 600px;
   -ms-overflow-style: none; 
   scrollbar-width: thin; 
   scrollbar-color: transparent transparent; 
