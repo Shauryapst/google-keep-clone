@@ -1,0 +1,68 @@
+/* components/Home.css */
+
+.home-container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+
+}
+
+
+.note-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin-top: 20px;
+  overflow-y: auto;
+  max-height: 800px;
+  
+  @media (max-width: 600px) {
+    max-height: none; 
+  }
+  -ms-overflow-style: none; 
+  scrollbar-width: thin; 
+  scrollbar-color: transparent transparent; 
+
+  &::-webkit-scrollbar {
+    width: 6px; 
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background-color: transparent;
+  }
+}
+
+
+
+.add-note-button {
+  background-color: #04AA6D;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 20px;
+}
+
+.add-note-tab{
+  display: flex;
+  justify-content: space-around;
+  background: rgb(62,62,62);
+  background: radial-gradient(circle, rgba(62,62,62,0.4374124649859944) 15%, rgba(208,208,208,0.2329306722689075) 80%);  border-radius: 10px;
+  color: white;
+  width: 50%;
+  
+  
+}
+
+.add-note-box{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.add-note-icon{
+  font-size: 20px;
+  padding: 10px;
+}

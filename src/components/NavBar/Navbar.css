@@ -1,0 +1,70 @@
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px;
+    color: white;
+}
+
+.app-name {
+    color: #fff;
+    font-size: 38px;
+    font-family: "Montserrat";
+    font-weight: 400;
+}
+
+.navbar-middle {
+    display: flex;
+    align-items: center;
+    background-color: white;
+}
+
+.search-box {
+    padding: 5px;
+    margin-right: 5px;
+    border:none;
+    outline:none;
+}
+
+.search-icon {
+    font-size: 16px;
+    color: grey;
+    margin: 5px;
+}
+
+.navbar-right {
+    display: flex;
+    align-items: center;
+}
+
+.navbar-button {
+    background: none;
+    border: none;
+    margin: 0 5px;
+    cursor: pointer;
+    color: white;
+}
+
+.icon {
+    font-size: 18px;
+}
+
+.profile-icon {
+    font-size: 18px;
+    margin-left: 10px;
+}
+
+@media (max-width: 600px) {
+    .navbar-middle {
+        display: none;
+    }
+
+    .navbar-right {
+        flex-direction: column;
+        align-items: flex-end;
+    }
+
+    .search-box {
+        display: none;
+    }
+}
