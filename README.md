@@ -2,6 +2,10 @@
 
 A simple clone of Google Keep, a note-taking application, built using React.
 
+**Hosted App Link:**
+[Google Keep Clone](https://google-keep-clone-git-dev-shauryapst.vercel.app/)
+
+
 ## Table of Contents
 
 - [Introduction](#introduction)
