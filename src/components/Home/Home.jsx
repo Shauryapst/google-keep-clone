@@ -57,11 +57,13 @@ const Home = ({ notes, searchQuery, updateNoteList }) => {
   };
   return (
     <div className="home-container">
+      {searchQuery.length===0 ?
       <div className="add-note-box">
         <span className="add-note-tab" onClick={handleAddButtonClick}>
           <i className="fa fa-plus add-note-icon"></i>
         </span>
-      </div>
+      </div> :<></>
+}
       <div className="note-list">
         <ListView
           notes={displayNotes}

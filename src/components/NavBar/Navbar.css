@@ -1,9 +1,12 @@
+/* Navbar.css */
+
 .navbar {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px;
     color: white;
+    transition: background-color 0.3s ease;
 }
 
 .app-name {
@@ -13,28 +16,55 @@
     font-weight: 400;
 }
 
-.navbar-middle {
+.navbar-right {
     display: flex;
     align-items: center;
-    background-color: white;
 }
 
+.search-box-container {
+    overflow: hidden;
+    position: relative;
+}
+
+
 .search-box {
+    padding: 0px;
+    margin: 0px;
+    border: none;
+    outline: none;
+    width: 0;
+    font-family: "Montserrat";
+    background-color: rgba(0, 0, 0, 0.2);
+    box-shadow: 0 0 25px 0 rgba(86, 27, 62, 0.4);
+    border-radius: 10px;
+    transition: width 0.3s ease;
+}
+
+.search-box.visible {
+
+    color: white;
     padding: 5px;
-    margin-right: 5px;
-    border:none;
-    outline:none;
+    
+    width: 200px;
 }
 
 .search-icon {
     font-size: 16px;
     color: grey;
     margin: 5px;
+    cursor: pointer;
+    transition: transform 0.3s ease;
 }
 
-.navbar-right {
-    display: flex;
-    align-items: center;
+.search-icon.visible {
+    transform: translateX(-150px);
+}
+
+.search-icon {
+    font-size: 16px;
+    color: grey;
+    margin: 5px;
+    cursor: pointer;
 }
 
 .navbar-button {
@@ -45,26 +75,33 @@
     color: white;
 }
 
-.icon {
-    font-size: 18px;
-}
-
-.profile-icon {
-    font-size: 18px;
-    margin-left: 10px;
-}
-
 @media (max-width: 600px) {
-    .navbar-middle {
-        display: none;
-    }
 
-    .navbar-right {
-        flex-direction: column;
-        align-items: flex-end;
-    }
+    /* .navbar-button {
+        display: none;
+    } */
 
     .search-box {
-        display: none;
+        width: 0px;
     }
+
+    .search-icon.visible {
+        transform: translateX(-150px);
+    }
+
+    .search-box.visible {
+
+        color: white;
+        padding: 5px;
+        width: 120px;
+    }
+
+    /* .search-icon {
+        display: block;
+    } */
+
+    /* .navbar-right {
+        flex-direction: column;
+        align-items: flex-end;
+    } */
 }
